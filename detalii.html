@@ -5,44 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafeneaua Central - Detalii</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
 
-    <nav class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 sticky top-0 z-50">
+    <nav class="topbar shadow-sm border-b px-6 py-4 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-extrabold text-amber-900 tracking-tighter hover:opacity-80">CafeSpot</a>
+            <a href="index.html" class="brand text-2xl hover:opacity-85">
+                <span class="brand-word">CafeSpot</span>
+            </a>
             <div class="flex space-x-2 md:space-x-4">
-                <a href="login.html" class="text-sm font-medium text-gray-600 hover:text-amber-900">Autentificare</a>
+                <a href="login.html" class="text-sm font-medium text-gray-600 link-accent">Autentificare</a>
             </div>
         </div>
     </nav>
 
     <div class="max-w-4xl mx-auto px-4 py-8">
-        <a href="index.html" class="inline-block mb-6 text-sm text-gray-500 hover:text-gray-800">← Înapoi la listă</a>
+        <a href="index.html" class="inline-block mb-6 text-sm text-gray-500 link-accent">← Înapoi la listă</a>
         
-        <div class="bg-white rounded-2xl shadow-sm border p-8 mb-8">
+        <div class="soft-card rounded-2xl border p-8 mb-8">
             <div class="flex justify-between items-start mb-6">
                 <div>
                     <h1 class="text-3xl font-bold">Cafeneaua Central</h1>
                     <p class="text-gray-500 mt-2">📍 București, Str. Exemplu nr. 1 • ⏰ L-V: 08:00 - 20:00</p>
                 </div>
                 <!-- Funcționalitate pentru salvare la favorite -->
-                <button class="bg-red-50 text-red-600 px-4 py-2 rounded-lg font-medium hover:bg-red-100">❤️ Salvează Favorit</button>
+                <button class="bg-rose-50 text-rose-600 px-4 py-2 rounded-lg font-medium hover:bg-rose-100 border border-rose-100">Salvează Favorit</button>
             </div>
             <p class="text-gray-700 leading-relaxed mb-6">Un loc perfect pentru studiu și cafea de specialitate, cu o atmosferă liniștită și Wi-Fi rapid.</p>
         </div>
 
-        <div class="bg-white rounded-2xl shadow-sm border p-8">
+        <div class="soft-card rounded-2xl border p-8">
             <h3 class="text-xl font-bold mb-6">Recenzii (24)</h3>
             
-            <div class="bg-gray-50 p-4 rounded-xl mb-8 border">
+            <div class="bg-orange-50/60 p-4 rounded-xl mb-8 border border-orange-100">
                 <h4 class="font-semibold mb-3">Lasă o recenzie</h4>
                 <select class="mb-3 p-2 border rounded-lg bg-white w-full max-w-xs">
                     <option>★★★★★ - Excelent</option>
                     <option>★★★★☆ - Foarte bun</option>
                 </select>
                 <textarea placeholder="Scrie experiența ta aici..." class="w-full p-3 border rounded-lg mb-3"></textarea>
-                <button class="bg-amber-900 text-white px-5 py-2 rounded-lg">Trimite recenzie</button>
+                <button class="cta-button px-5 py-2 rounded-lg">Trimite recenzie</button>
             </div>
 
             <div class="border-b pb-4 mb-4">
