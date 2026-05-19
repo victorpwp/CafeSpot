@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalii Cafenea - CafeSpot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <nav class="topbar shadow-sm border-b px-6 py-4 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="brand text-2xl hover:opacity-85">
+            <span class="brand-word">CafeSpot</span>
+        </a>
+
+        <div class="flex items-center">
+            <div id="auth-links" class="flex space-x-2 md:space-x-4 items-center">
+                <a href="login.html" class="text-sm font-medium text-gray-600 link-accent">Autentificare</a>
+                <a href="register.html" class="cta-button px-4 py-2 rounded-full text-sm font-medium transition">Înregistrare</a>
+            </div>
+
+            <a href="admin.html" id="link-admin" class="hidden text-sm font-medium text-gray-500 link-accent">Admin</a>
+
+            <div id="user-links" class="hidden flex space-x-4 items-center">
+                <span id="nume-utilizator" class="text-sm font-bold text-stone-700"></span>
+                <button id="btn-logout" class="text-sm text-red-600 hover:underline">Deconectare</button>
+                <a href="favorite.html" class="text-sm font-medium text-rose-600 hover:underline">❤️ Favorite</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <a href="index.html" class="inline-block mb-6 text-sm text-gray-500 link-accent">← Înapoi la listă</a>
+        
+        <div class="soft-card rounded-2xl border p-8 mb-8 bg-white shadow-sm">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h1 id="detaliu-nume" class="text-3xl font-bold text-gray-900">Se încarcă...</h1>
+                    <p class="text-gray-500 mt-2 flex items-center gap-2">
+                        <span>📍 <span id="detaliu-adresa">...</span></span>
+                        <span class="text-gray-300">•</span>
+                        <span>⏰ <span id="detaliu-orar">...</span></span>
+                    </p>
+                </div>
+                <button id="btn-favorit" class="bg-rose-50 text-rose-600 px-4 py-2 rounded-lg font-medium hover:bg-rose-100 border border-rose-100">Salvează Favorit</button>
+            </div>
+            
+            <div class="border-t border-gray-100 pt-6">
+                <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Despre această locație</h3>
+                <p id="detaliu-descriere" class="text-gray-700 leading-relaxed text-lg">...</p>
+            </div>
+        </div>
+
+        <div class="soft-card rounded-2xl border p-8 bg-white shadow-sm">
+            <h3 class="text-xl font-bold mb-6 text-gray-900">Recenzii și Experiențe</h3>
+            
+            <div id="formular-recenzie" class="bg-orange-50/60 p-6 rounded-xl mb-10 border border-orange-100">
+                <h4 class="font-semibold mb-4 text-orange-900">Lasă o recenzie</h4>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Rating-ul tău</label>
+                    <select id="rating-nou" class="p-2 border border-orange-200 rounded-lg bg-white w-full max-w-xs focus:ring-2 focus:ring-orange-300 focus:outline-none">
+                        <option value="5">★★★★★ - Excelent</option>
+                        <option value="4">★★★★☆ - Foarte bun</option>
+                        <option value="3">★★★☆☆ - Bun</option>
+                        <option value="2">★★☆☆☆ - Slăbuț</option>
+                        <option value="1">★☆☆☆☆ - Slab</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Comentariul tău</label>
+                    <textarea id="text-recenzie" placeholder="Cum a fost cafeaua? Dar atmosfera?" class="w-full p-3 border border-orange-200 rounded-lg h-32 focus:ring-2 focus:ring-orange-300 focus:outline-none"></textarea>
+                </div>
+
+                <button id="btn-trimite-recenzie" class="cta-button px-6 py-2 rounded-lg font-bold shadow-sm">
+                    Trimite recenzie
+                </button>
+            </div>
+
+            <div id="lista-recenzii" class="space-y-6">
+                <div class="text-center py-4">
+                    <p class="text-gray-400 italic">Se încarcă recenziile...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="detalii.js"></script>
+</body>
+</html>

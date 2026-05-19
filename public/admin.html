@@ -24,15 +24,15 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div class="soft-card p-6 rounded-xl border">
                 <h2 class="text-xl font-bold mb-4">Adaugă Cafenea Nouă</h2>
-                <input type="text" placeholder="Nume Cafenea" class="w-full mb-3 p-2 border border-orange-100 rounded focus:ring-2 focus:ring-teal-300 focus:outline-none">
-                <input type="text" placeholder="Adresă" class="w-full mb-3 p-2 border border-orange-100 rounded focus:ring-2 focus:ring-teal-300 focus:outline-none">
+                <input type="text" id="cafe-nume" placeholder="Nume Cafenea" class="w-full mb-3 p-2 border border-orange-100 rounded focus:ring-2 focus:ring-teal-300 focus:outline-none">
+                <input type="text" id="cafe-adresa" placeholder="Adresă" class="w-full mb-3 p-2 border border-orange-100 rounded focus:ring-2 focus:ring-teal-300 focus:outline-none">
                 <div class="flex space-x-3 mb-3">
-                    <input type="text" placeholder="Latitudine" class="w-1/2 p-2 border border-orange-100 rounded focus:ring-2 focus:ring-teal-300 focus:outline-none">
-                    <input type="text" placeholder="Longitudine" class="w-1/2 p-2 border border-orange-100 rounded focus:ring-2 focus:ring-teal-300 focus:outline-none">
+                    <input type="number" id="cafe-lat" placeholder="Latitudine" class="w-1/2 p-2 border border-orange-100 rounded focus:ring-2 focus:ring-teal-300 focus:outline-none">
+                    <input type="number" id="cafe-long" placeholder="Longitudine" class="w-1/2 p-2 border border-orange-100 rounded focus:ring-2 focus:ring-teal-300 focus:outline-none">
                 </div>
-                <textarea placeholder="Descriere" class="w-full mb-3 p-2 border border-orange-100 rounded h-24 focus:ring-2 focus:ring-teal-300 focus:outline-none"></textarea>
-                <input type="text" placeholder="Program (ex: 08:00 - 20:00)" class="w-full mb-4 p-2 border border-orange-100 rounded focus:ring-2 focus:ring-teal-300 focus:outline-none">
-                <button class="cta-button px-4 py-2 rounded font-bold">Salvează</button>
+                <textarea id="cafe-descriere" placeholder="Descriere" class="w-full mb-3 p-2 border border-orange-100 rounded h-24 focus:ring-2 focus:ring-teal-300 focus:outline-none"></textarea>
+                <input type="text" id="cafe-orar" placeholder="Program (ex: 08:00 - 20:00)" class="w-full mb-4 p-2 border border-orange-100 rounded focus:ring-2 focus:ring-teal-300 focus:outline-none">
+                <button id="btn-salveaza" class="cta-button px-4 py-2 rounded font-bold">Salvează</button>
             </div>
 
             <div>
@@ -63,5 +63,8 @@
             </div>
         </div>
     </div>
+
+   <script src="admin.js"></script>
+
 </body>
 </html>

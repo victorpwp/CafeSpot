@@ -1,0 +1,35 @@
+services:
+  cafespot-app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongo-db:27017/cafespot
+    depends_on:
+      mongo-db:
+        condition: service_healthy
+
+  mongo-db:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://mongo-db:27017/
+    depends_on:
+      - mongo-db
+
+volumes:
+  mongo-data:

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritele Mele - CafeSpot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <nav class="topbar shadow-sm border-b px-6 py-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="brand text-2xl hover:opacity-85">
+                <span class="brand-word">CafeSpot</span>
+            </a>
+
+            <a href="admin.html" id="link-admin" class="hidden text-sm font-medium text-gray-500 link-accent">Admin</a>
+            <div class="flex items-center">
+                <div id="auth-links" class="flex space-x-2 md:space-x-4 items-center">
+                    <a href="login.html" class="text-sm font-medium text-gray-600 link-accent">Autentificare</a>
+                    <a href="register.html" class="cta-button px-4 py-2 rounded-full text-sm font-medium transition">Înregistrare</a>
+                </div>
+
+                <div id="user-links" class="hidden flex space-x-4 items-center">
+                    <a href="favorite.html" class="text-sm font-medium text-rose-600 hover:underline">❤️ Favorite</a>
+                    
+                    <span id="nume-utilizator" class="text-sm font-bold text-stone-700"></span>
+                    <button id="btn-logout" class="text-sm text-gray-500 hover:text-red-600 hover:underline">Deconectare</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-10">
+        <div class="flex justify-between items-end mb-8 border-b pb-4">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Cafenelele tale salvate</h1>
+                <p class="text-gray-500 mt-2">Toate locurile tale preferate, într-un singur loc.</p>
+            </div>
+            <a href="index.html" class="text-sm font-medium text-teal-600 hover:underline">← Caută mai multe</a>
+        </div>
+
+        <div id="grid-favorite" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="col-span-full text-center py-20">
+                <p class="text-xl text-gray-500 font-medium">Se încarcă favoritele tale... ☕</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="favorite.js"></script>
+</body>
+</html>

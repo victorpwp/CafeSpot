@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CafeSpot - Acasă</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <nav class="topbar shadow-sm border-b px-6 py-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="brand text-2xl hover:opacity-85">
+                <span class="brand-word">CafeSpot</span>
+            </a>
+
+            <div class="hidden md:block flex-1 max-w-lg mx-8 relative">
+                <input type="text" placeholder="Caută cafenele după nume sau locație..." class="w-full bg-white/80 border border-orange-100 rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-teal-300">
+                <span class="absolute left-3 top-2.5 text-gray-400">🔍</span>
+            </div>
+
+            <div class="flex items-center space-x-2 md:space-x-4">
+                <a href="admin.html" id="link-admin" class="hidden text-sm font-medium text-gray-500 link-accent">Admin</a>
+
+                <div id="auth-links" class="flex space-x-2 md:space-x-4 items-center">
+                    <a href="login.html" class="text-sm font-medium text-gray-600 link-accent">Autentificare</a>
+                    <a href="register.html" class="cta-button px-4 py-2 rounded-full text-sm font-medium transition">Înregistrare</a>
+                </div>
+
+                <div id="user-links" class="hidden flex space-x-4 items-center">
+                    <span id="nume-utilizator" class="text-sm font-bold text-stone-700"></span>
+                    <button id="btn-logout" class="text-sm text-red-600 hover:underline">Deconectare</button>
+                    <a href="favorite.html" class="text-sm font-medium text-rose-600 hover:underline">❤️ Favorite</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <header class="text-center mb-10">
+            <span class="accent-pill rounded-full px-3 py-1 text-xs font-bold mb-4">
+                <span class="cat-dot"></span>
+                Coffee with cat energy
+            </span>
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-3">Găsește locul perfect.</h1>
+            <p class="text-gray-500 max-w-xl mx-auto">Explorează cafenelele, citește recenzii și salvează locațiile favorite.</p>
+        </header>
+
+        <div id="harta-cafenele" class="w-full h-96 rounded-2xl mb-10 shadow-md border border-orange-100 relative z-0 overflow-hidden"></div>
+
+        <div id="lista-cafenele" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="col-span-full text-center py-10">
+                <p class="text-xl text-gray-500 font-medium">Se încarcă cafenelele... ☕</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
