@@ -6,7 +6,7 @@
 
 ---
 
-## 🛠️ Tehnologii folosite
+## Tehnologii folosite
 
 | Categorie | Tehnologii |
 |---|---|
@@ -18,14 +18,14 @@
 
 ---
 
-## 🚀 Configurare și Rulare
+## Configurare și Rulare
 
 > **Notă:** Pentru a rula acest proiect nu este necesară instalarea Node.js sau MongoDB pe sistemul gazdă. Întregul mediu este gestionat prin Docker.
 
 ### 1. Instalare cerințe preliminare
 
 Descărcați și instalați **Docker Desktop** de pe site-ul oficial:
-👉 [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
+ [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
 
 Asigurați-vă că aplicația Docker Desktop este **pornită** înainte de a trece la pasul următor.
 
@@ -39,7 +39,7 @@ docker-compose up --build
 
 După finalizarea procesului de descărcare și construire a imaginilor, aplicația va fi disponibilă la:
 
-🌐 **[http://localhost:5000](http://localhost:5000)**
+ **[http://localhost:5000](http://localhost:5000)**
 
 Pentru a opri aplicația, apăsați `Ctrl + C` în terminal, apoi rulați:
 
@@ -51,15 +51,15 @@ docker-compose down
 
 Fișierele de interfață (HTML, CSS, JavaScript pentru client) se află în folderul `/public`. Dacă doriți să faceți modificări de design, editați fișierele respective.
 
-> ⚠️ Deoarece codul este copiat în interiorul containerului la construire, pentru a vizualiza modificările va trebui să opriți aplicația și să rulați din nou `docker-compose up --build`.
+>  Deoarece codul este copiat în interiorul containerului la construire, pentru a vizualiza modificările va trebui să opriți aplicația și să rulați din nou `docker-compose up --build`.
 
 ---
 
-## 🗄️ Gestionarea Bazei de Date (Mongo-Express)
+##  Gestionarea Bazei de Date (Mongo-Express)
 
 Proiectul include o interfață vizuală pentru administrarea bazei de date MongoDB — nu este necesară instalarea unor programe terțe precum MongoDB Compass.
 
-1. Accesați în browser: 🌐 **[http://localhost:8081](http://localhost:8081)**
+1. Accesați în browser:  **[http://localhost:8081](http://localhost:8081)**
 2. Introduceți credențialele implicite:
    - **Username:** `admin`
    - **Password:** `pass`
@@ -68,7 +68,7 @@ Proiectul include o interfață vizuală pentru administrarea bazei de date Mong
 
 ---
 
-## 🏗️ Arhitectura containerelor
+## Arhitectura containerelor
 
 Aplicația rulează pe o arhitectură de tip microservicii, orchestrată prin `docker-compose.yml`, compusă din **3 containere distincte**:
 
