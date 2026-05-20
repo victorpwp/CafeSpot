@@ -43,6 +43,10 @@ async function incarcaPagina() {
             document.getElementById('detaliu-adresa').innerText = cafe.adresa;
             document.getElementById('detaliu-orar').innerText = cafe.orar || "Program nespecificat";
             document.getElementById('detaliu-descriere').innerText = cafe.descriere || "Fără descriere.";
+            const titluRecenzii = document.getElementById('titlu-recenzii');
+            if (titluRecenzii) {
+                titluRecenzii.innerText = `Recenzii și Experiențe · ★ ${cafe.ratingMediu || 'Nou'}`;
+            }
             
             afiseazaRecenzii(cafe.recenzii);
         }
@@ -73,8 +77,15 @@ function afiseazaRecenzii(recenzii) {
 
 // UC4 recenzie
 document.getElementById('btn-trimite-recenzie').addEventListener('click', async () => {
+    const token = localStorage.getItem('token');
     const rating = document.getElementById('rating-nou').value;
     const comentariu = document.getElementById('text-recenzie').value;
+
+    if (!token) {
+        alert("Trebuie să fii logat pentru a lăsa o recenzie.");
+        window.location.href = 'login.html';
+        return;
+    }
 
     if (!comentariu) {
         alert("Te rugăm să scrii un comentariu!");
@@ -84,18 +95,24 @@ document.getElementById('btn-trimite-recenzie').addEventListener('click', async 
     try {
         const response = await fetch(`/api/cafenele/${cafeId}/recenzii`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 rating: parseInt(rating),
-                comentariu: comentariu,
-               utilizator: localStorage.getItem('userNume') || "Vizitator"
+                comentariu: comentariu
             })
         });
+
+        const data = await response.json();
 
         if (response.ok) {
             alert("Recenzie trimisă!");
             document.getElementById('text-recenzie').value = ''; 
             incarcaPagina(); 
+        } else {
+            alert(data.mesaj || data.eroare || "Nu am putut salva recenzia.");
         }
     } catch (error) {
         console.error("Eroare la trimiterea recenziei:", error);

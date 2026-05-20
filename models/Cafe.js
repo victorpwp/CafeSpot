@@ -7,13 +7,16 @@ const CafeSchema = new mongoose.Schema({
     longitudine: { type: Number, required: true },
     descriere: String,
     orar: String,
+    imagine: String,
 
 
     recenzii: [
         {
             utilizator: { type: String, default: "Anonim" },
+            userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
             rating: { type: Number, required: true },
             comentariu: { type: String, required: true },
+            aprobata: { type: Boolean, default: true },
             data: { type: Date, default: Date.now }
         }
     ]

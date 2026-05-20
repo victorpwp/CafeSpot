@@ -7,6 +7,25 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let toateCafenelele = []; 
 let markeri = L.layerGroup().addTo(harta); 
 
+function cafeVisualMarkup(cafe) {
+    if (cafe.imagine) {
+        return `
+            <div class="h-40 cafe-visual cafe-photo" style="background-image: url('${cafe.imagine.replace(/'/g, '%27')}')"></div>
+        `;
+    }
+
+    return `
+        <div class="h-40 cafe-visual">
+            <div class="cafe-scene" aria-hidden="true">
+                <span class="cafe-window"></span>
+                <span class="cafe-steam"></span>
+                <span class="cafe-cup"></span>
+                <span class="cafe-counter"></span>
+            </div>
+        </div>
+    `;
+}
+
 async function incarcaContinut() {
     try {
         const response = await fetch('/api/cafenele');
@@ -63,19 +82,22 @@ function afiseazaCafenele(lista) {
 
     lista.forEach(cafe => {
         const marker = L.marker([cafe.latitudine, cafe.longitudine]);
-        marker.bindPopup(`<b>${cafe.nume}</b><br>${cafe.adresa}`);
+        marker.bindPopup(`<b>${cafe.nume}</b><br>${cafe.adresa}<br><a href="detalii.html?id=${cafe._id}">Vezi detalii</a>`);
+        marker.on('click', () => {
+            marker.openPopup();
+        });
         markeri.addLayer(marker);
 
         const card = document.createElement('div');
         card.className = "soft-card rounded-xl border overflow-hidden hover:shadow-md transition";
         card.innerHTML = `
-            <div class="h-40 cafe-visual" style="background-color: #f3f4f6; display: flex; align-items: center; justify-content: center; font-size: 40px;">☕</div>
+            ${cafeVisualMarkup(cafe)}
             <div class="p-5">
                 <h2 class="text-lg font-bold">${cafe.nume}</h2>
                 <p class="text-xs text-teal-700 mb-3">📍 ${cafe.adresa}</p>
                 <p class="text-sm text-gray-600 line-clamp-2 mb-4">${cafe.descriere || 'O cafenea primitoare.'}</p>
                 <div class="flex justify-between items-center border-t pt-4">
-                    <div class="text-sm"><span class="text-yellow-500">★</span> 5.0</div>
+                    <div class="text-sm"><span class="text-yellow-500">★</span> ${cafe.ratingMediu || 'Nou'}</div>
                     <a href="detalii.html?id=${cafe._id}" class="text-sm font-semibold link-accent hover:underline">Vezi detalii</a>
                 </div>
             </div>
@@ -88,15 +110,21 @@ function afiseazaCafenele(lista) {
 const inputCautare = document.querySelector('input[placeholder*="Caută"]');
 
 if (inputCautare) {
-    inputCautare.addEventListener('input', (e) => {
+    inputCautare.addEventListener('input', async (e) => {
         const textCautat = e.target.value.toLowerCase();
-        
-        const rezultateFiltrate = toateCafenelele.filter(cafe => {
-            return cafe.nume.toLowerCase().includes(textCautat) || 
-                   cafe.adresa.toLowerCase().includes(textCautat);
-        });
 
-        afiseazaCafenele(rezultateFiltrate);
+        try {
+            const response = await fetch(`/api/cafenele?search=${encodeURIComponent(textCautat)}`);
+            const rezultateFiltrate = await response.json();
+            afiseazaCafenele(rezultateFiltrate);
+        } catch (error) {
+            const rezultateFiltrate = toateCafenelele.filter(cafe => {
+                return cafe.nume.toLowerCase().includes(textCautat) ||
+                       cafe.adresa.toLowerCase().includes(textCautat);
+            });
+
+            afiseazaCafenele(rezultateFiltrate);
+        }
     });
 }
 
